@@ -1,0 +1,10 @@
+Description:
+    Installs turbo-hmr into your Rails application.
+
+    This generator will:
+    - Create an initializer to disable data-turbo-track on the importmap
+    - Pin the turbo_hmr module in config/importmap.rb
+    - Add the import to app/javascript/application.js
+
+Example:
+    bin/rails generate turbo:hmr:install

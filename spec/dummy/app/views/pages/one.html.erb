@@ -1,0 +1,9 @@
+<h1>Page One</h1>
+
+<div id="version" data-controller="version"></div>
+<div id="admin--version" data-controller="admin--version"></div>
+
+<p>
+  <%= link_to "Go to Two with Turbo", "/two", data: { turbo: true } %>
+  <%= link_to "Go to Two without Turbo", "/two", data: { turbo: false } %>
+</p>

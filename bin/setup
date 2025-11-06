@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "==> Bundling root gems"
+bundle install
+
+echo "==> Bundling dummy app gems"
+pushd spec/dummy >/dev/null
+bundle install
+popd >/dev/null
+
+echo "==> Setup complete. Run tests with: bundle exec rspec"
+

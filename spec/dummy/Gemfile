@@ -1,0 +1,13 @@
+source "https://rubygems.org"
+
+gem "bootsnap", require: false
+gem "rails", "~> 7.2.3"
+gem "sprockets-rails"
+gem "importmap-rails"
+gem "turbo-rails"
+gem "stimulus-rails"
+gem "sqlite3"
+gem "puma"
+
+# Load the gem from the parent directory
+gem "turbo-hmr", path: "../.."
