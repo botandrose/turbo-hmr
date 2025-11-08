@@ -11,7 +11,7 @@ module Turbo
       end
 
       initializer "turbo_hmr.importmap_helper" do
-        ActiveSupport.on_load(:action_controller) do
+        ActiveSupport.on_load(:action_controller_base) do
           helper Turbo::Hmr::ImportmapHelper
         end
       end
