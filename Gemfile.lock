@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    turbo-hmr (0.0.2)
+    turbo-hmr (0.0.3)
       importmap-rails
       railties (>= 6.0)
 
