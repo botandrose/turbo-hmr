@@ -8,7 +8,7 @@ class TurboHmr {
 
   start(application) {
     this.application = application
-    this.currentImportmap = this.extractImportmap(document)
+    this.currentImportmap = this.extractImportmapFromDoc(document)
 
     document.addEventListener("turbo:before-fetch-response", this.handleBeforeFetchResponse.bind(this))
     document.addEventListener("turbo:before-render", this.handleBeforeRender.bind(this))
@@ -17,9 +17,7 @@ class TurboHmr {
   async handleBeforeFetchResponse(event) {
     const response = event.detail.fetchResponse
     const html = await response.responseHTML
-    const parser = new DOMParser()
-    const doc = parser.parseFromString(html, "text/html")
-    this.pendingImportmap = this.extractImportmap(doc)
+    this.pendingImportmap = this.extractImportmapFromHtml(html)
   }
 
   handleBeforeRender(event) {
@@ -63,12 +61,23 @@ class TurboHmr {
     }
   }
 
-  extractImportmap(doc) {
+  extractImportmapFromDoc(doc) {
     const importmapScript = doc.querySelector('script[type="importmap"]')
     if (!importmapScript) return null
+    return this.parseImportmap(importmapScript.textContent)
+  }
 
+  extractImportmapFromHtml(html) {
+    // Avoid DOMParser: parsing HTML with inline style="..." attributes triggers
+    // style-src CSP violations in Firefox. Extract the importmap <script> content via regex.
+    const match = html.match(/<script[^>]*\btype\s*=\s*["']importmap["'][^>]*>([\s\S]*?)<\/script>/i)
+    if (!match) return null
+    return this.parseImportmap(match[1])
+  }
+
+  parseImportmap(text) {
     try {
-      return JSON.parse(importmapScript.textContent)
+      return JSON.parse(text)
     } catch (e) {
       console.error("turbo-hmr: Failed to parse importmap", e)
       return null
