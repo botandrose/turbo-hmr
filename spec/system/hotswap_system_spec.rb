@@ -95,6 +95,13 @@ RSpec.describe "Stimulus controller hotswap on Turbo navigation", type: :system,
     expect(page).to have_selector("#admin--version", text: "v2")
   end
 
+  it "does not error when a fetch response has no HTML body (e.g. 204 No Content)" do
+    visit "/"
+    expect(page).to have_content("Page One")
+
+    click_button "Append"
+  end
+
   it "hot-swaps namespaced controllers (admin/version)" do
     visit "/"
     expect(page).to have_content("Page One")

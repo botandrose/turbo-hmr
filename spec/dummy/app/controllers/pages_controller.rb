@@ -4,5 +4,9 @@ class PagesController < ApplicationController
 
   def two
   end
+
+  def append
+    head :no_content
+  end
 end
 

@@ -17,6 +17,7 @@ class TurboHmr {
   async handleBeforeFetchResponse(event) {
     const response = event.detail.fetchResponse
     const html = await response.responseHTML
+    if (!html) return
     this.pendingImportmap = this.extractImportmapFromHtml(html)
   }
 
