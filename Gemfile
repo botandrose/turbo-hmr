@@ -10,9 +10,9 @@ gem "rspec", "~> 3.0"
 
 group :development, :test do
   gem "bootsnap", require: false
-  gem "rails", "~> 7.2"
+  gem "rails", "~> 8.1"
   gem "sqlite3"
-  gem "rspec-rails", "~> 6.1"
+  gem "rspec-rails", "~> 8.0"
   gem "capybara"
   gem "cuprite"
   gem "debug"
@@ -23,4 +23,5 @@ group :development, :test do
   gem "turbo-rails"
   gem "stimulus-rails"
   gem "puma"
+  gem "webrick"
 end

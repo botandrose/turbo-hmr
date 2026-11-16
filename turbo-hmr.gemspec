@@ -32,5 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "railties", ">= 6.0"
   spec.add_dependency "importmap-rails"
 
-  spec.add_development_dependency "rspec-rails", "~> 6.0"
+  spec.add_development_dependency "rspec-rails", "~> 8.0"
 end

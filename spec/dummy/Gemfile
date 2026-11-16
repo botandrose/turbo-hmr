@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "bootsnap", require: false
-gem "rails", "~> 7.2.3"
+gem "rails", "~> 8.1"
 gem "sprockets-rails"
 gem "importmap-rails"
 gem "turbo-rails"
